@@ -243,7 +243,14 @@ function rain() {
     if (Math.random() < 0.35) {
 
         createRainbow();
+
     }
+
+    //if (Math.random() < 0.4) {
+
+        createFog(4);
+
+    //}
 
 }
 
@@ -255,17 +262,69 @@ function snow() {
 
     createSnow(180);
 
+    if (Math.random() < 0.5) {
+
+        createFog(5);
+
+    }
+
+}
+
+function lightningLoop() {
+
+    createLightning();
+
+    setTimeout(function () {
+
+        lightningLoop();
+
+    }, 1500 + Math.random() * 3500);
+
+}
+
+function createLightning() {
+
+    const bolt = document.createElement("div");
+
+    bolt.className = "lightning";
+
+    bolt.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    bolt.style.top = "0px";
+
+    bolt.style.rotate =
+        (Math.random() * 20 - 10) + "deg";
+
+    weatherContainer.appendChild(bolt);
+
+    const flash = document.createElement("div");
+
+    flash.className = "flash";
+
+    document.body.appendChild(flash);
+
+    setTimeout(function () {
+
+        bolt.remove();
+
+        flash.remove();
+
+    }, 300);
+
 }
 
 function thunder() {
 
     weatherContainer.classList.add("sky-cloudy");
 
-    createClouds(10);
+    createClouds(8);
 
-    createRain(350);
+    createRain(250);
 
-    setInterval(flashLightning, 4000 + Math.random() * 5000);
+    createFog(6);
+
+    lightningLoop();
 
 }
 
@@ -430,6 +489,37 @@ function createSplash(x) {
         splash.remove();
 
     }, 350);
+
+}
+
+function createFog(number) {
+
+    for (let i = 0; i < number; i++) {
+
+        const fog = document.createElement("div");
+
+        fog.className = "fog";
+
+        fog.style.top =
+            (100 + Math.random() * 250) + "px";
+
+        fog.style.left =
+            (-400 + Math.random() * 400) + "px";
+
+        fog.style.animationDuration =
+            (40 + Math.random() * 30) + "s";
+
+        fog.style.animationDelay =
+            (Math.random() * 10) + "s";
+
+        fog.style.opacity =
+            0.25 + Math.random() * 0.35;
+
+        weatherContainer.appendChild(fog);
+
+        console.log("🌫 Fog Created");
+
+    }
 
 }
 

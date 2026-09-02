@@ -723,3 +723,218 @@
     }
 
 }
+
+/* =========================================
+   Lightning V4
+========================================= */
+
+.lightning {
+
+    position: absolute;
+
+    width: 6px;
+
+    height: 0;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px cyan,
+        0 0 40px white;
+
+    opacity: 0;
+
+    z-index: 20;
+
+    animation: lightningFlash .25s linear forwards;
+
+}
+
+@keyframes lightningFlash {
+
+    0% {
+
+        opacity: 0;
+
+        height: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+        height: 180px;
+
+    }
+
+    30% {
+
+        transform:
+            translateX(-20px);
+
+        height: 260px;
+
+    }
+
+    45% {
+
+        transform:
+            translateX(25px);
+
+        height: 380px;
+
+    }
+
+    60% {
+
+        transform:
+            translateX(-15px);
+
+        height: 500px;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        height: 520px;
+
+    }
+
+}
+
+.flash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 19;
+
+    animation: flash .25s linear;
+
+}
+
+@keyframes flash {
+
+    0% {
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: .75;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+/* =========================================
+   Fog
+========================================= */
+
+.fog {
+
+    position: absolute;
+
+    width: 350px;
+    height: 90px;
+
+    background: rgba(255,255,255,.18);
+
+    border-radius: 100px;
+
+    filter: blur(18px);
+
+    opacity: .6;
+
+    animation:
+        fogMove linear infinite,
+        fogFloat 8s ease-in-out infinite alternate;
+
+}
+
+.fog::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 80px;
+
+    left: 40px;
+    top: -20px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.18);
+
+}
+
+.fog::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 90px;
+
+    right: 30px;
+    top: -25px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.18);
+
+}
+
+@keyframes fogMove {
+
+    from {
+
+        transform: translateX(-450px);
+
+    }
+
+    to {
+
+        transform: translateX(calc(100vw + 500px));
+
+    }
+
+}
+
+@keyframes fogFloat {
+
+    from {
+
+        margin-top: 0;
+
+    }
+
+    to {
+
+        margin-top: 20px;
+
+    }
+
+}
