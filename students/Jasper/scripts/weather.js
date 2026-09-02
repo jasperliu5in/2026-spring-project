@@ -3,6 +3,7 @@
 // =========================================
 
 const weatherContainer = document.getElementById("weather-container");
+const ChangeWeather = document.getElementById("change-weather")
 
 // =========================================
 // Wind System V4
@@ -523,4 +524,8 @@ function createFog(number) {
 
 }
 
-console.log("Wind =", wind);
+function changeWeather() {
+    console.log('some things')
+}
+
+ChangeWeather.addEventListener("click", changeWeather);
