@@ -27,7 +27,7 @@ const weatherTypes = [
 
 const weather =
     weatherTypes[Math.floor(Math.random() * weatherTypes.length)];
-
+    
 switch (weather) {
 
     case "sunny":
